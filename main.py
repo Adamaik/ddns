@@ -9,9 +9,9 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.dnspod.v20210323 import dnspod_client, models
  
-domain_id = '94869765'
-SecretId='AKIDUzQpEVlqiQvUtEJRacT6jDnLuXWXQ7i9'
-SecretKey='bo02hEvV5eEsaD1iS32d6Z5TuLivEVG2'
+domain_id = '填写网址id'
+SecretId='填写id'
+SecretKey='填写密钥'
 ip_old=""
  
 def updateDNS( value ):
