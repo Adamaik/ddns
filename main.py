@@ -20,33 +20,30 @@ def updateDNS( value ):
         # 代码泄露可能会导致 SecretId 和 SecretKey 泄露，并威胁账号下所有资源的安全性。以下代码示例仅供参考，建议采用更安全的方式来使用密钥，请参见：https://cloud.tencent.com/document/product/1278/85305
         # 密钥可前往官网控制台 https://console.cloud.tencent.com/cam/capi 进行获取
         cred = credential.Credential(SecretId, SecretKey)
-        # 实例化一个http选项，可选的，没有特殊需求可以跳过
         httpProfile = HttpProfile()
         httpProfile.endpoint = "dnspod.tencentcloudapi.com"
 
-        # 实例化一个client选项，可选的，没有特殊需求可以跳过
         clientProfile = ClientProfile()
         clientProfile.httpProfile = httpProfile
-        # 实例化要请求产品的client对象,clientProfile是可选的
         client = dnspod_client.DnspodClient(cred, "", clientProfile)
 
         # 实例化一个请求对象,每个接口都会对应一个request对象
         req = models.ModifyRecordRequest()
         params1 = {
-            "Domain": "adamaik.top",
+            "Domain": "填写你的域名",
             "SubDomain": "@",
             "RecordType": "A",
             "RecordLine": "默认",
             "Value": value,
-            "RecordId": 1565168996
+            "RecordId": 0000000       #参照README.md的内容填写
         }
         params2 = {
-            "Domain": "adamaik.top",
+            "Domain": "填写你的域名",
             "SubDomain": "www",
             "RecordType": "A",
             "RecordLine": "默认",
             "Value": value,
-            "RecordId": 1565168997
+            "RecordId": 000000       #参照README.md的内容填写
         }
         req.from_json_string(json.dumps(params1))
         # 返回的resp是一个ModifyRecordResponse的实例，与请求对象对应
@@ -83,6 +80,6 @@ while True:
         updateDNS(ip)
     else:
         print(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M:%S')+"  ip一致，无需更改")
-    time.sleep(3600)
- 
- 
+    print("执行完毕，正在休眠一小时")
+    time.sleep(3600)    #可以自己调节休眠时间
+    print("休眠一小时完毕")
